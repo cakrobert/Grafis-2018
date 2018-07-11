@@ -48,6 +48,11 @@ public class Piston implements GLEventListener {
         frame.setVisible(true);
         animator.start();
     }
+    private float view_rotx = 0.0f;
+    private float view_roty = 0.0f;
+    private int oldMouseX;
+    private int oldMouseY;
+
 
     public void init(GLAutoDrawable drawable) {
         // Use debug pipeline
@@ -141,7 +146,67 @@ public class Piston implements GLEventListener {
         gl.glPopMatrix();
         gl.glFlush();
     }
+static boolean b = false;
+    static boolean i = false;
 
     public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+        //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void mouseClicked(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mousePressed(MouseEvent e) {
+        oldMouseX = e.getX();
+        oldMouseY = e.getY();
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseEntered(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseExited(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        Dimension size = e.getComponent().getSize();
+        float thetaY = 360.0f * ((float) (x - oldMouseX) / (float) size.width);
+        float thetaX = 360.0f * ((float) (y - oldMouseY) / (float) size.height);
+        oldMouseX = x;
+        oldMouseY = y;
+        view_rotx += thetaX;
+        view_roty += thetaY;
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void keyTyped(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyCode());
+        if (e.getKeyCode() == 32) {
+            b = true;//To change body of generated methods, choose Tools | Templates.
+        } else if (e.getKeyCode() == 39) {
+            i = true;
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+}
+
 }
